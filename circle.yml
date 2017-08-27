@@ -1,0 +1,9 @@
+test:
+  override:
+    - lein test
+
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: motiva-mock
