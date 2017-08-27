@@ -1,10 +1,11 @@
 (defproject mock-external-integration "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :description "Motiva Mock API"
+  :url "https://motiva-mock.herokuapp.com/"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [metosin/compojure-api "2.0.0-alpha7"]
+                 [ring/ring-jetty-adapter "1.4.0"]
 
                  [prismatic/schema "1.1.6"]]
 
