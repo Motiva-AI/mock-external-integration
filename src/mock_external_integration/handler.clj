@@ -17,7 +17,8 @@
     :data {:info {:title "Mock API"
                   :description "Motiva mock API for external integration development"
                   :version "1.0"}
-           :tags [{:name "api", :description "some apis"}]}}}
+           :tags [{:name "api", :description "some apis"}]}
+    :options {:ui {:docExpansion :list}}}}
 
   (context "/api" []
 
