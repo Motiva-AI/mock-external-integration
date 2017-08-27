@@ -10,6 +10,7 @@
 
   :ring {:handler mock-external-integration.handler/app}
   :uberjar-name "server.jar"
+  :min-lein-version "2.0.0"
 
   :profiles {:dev {:dependencies [[javax.servlet/javax.servlet-api "3.1.0"]
                                   [cheshire "5.5.0"]
