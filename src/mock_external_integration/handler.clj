@@ -3,7 +3,9 @@
             [ring.util.http-response :refer :all]
 
             [schema.core :as schema]
-            [mock-external-integration.schema :as ms]))
+
+            [mock-external-integration.schema :as ms]
+            [mock-external-integration.gateway :as gw]))
 
 (defn handle-get-email
   ([] (ok (gw/emails)))
