@@ -9,7 +9,7 @@
   (let [port (Integer. (or port (env :port) 5000))]
 
     ;; bootstrap checks
-    (assert (env :gateway-host))
+    (assert (env :gateway-path-email))
 
     ;; start server
     (run-server (site app) {:port port :join? false})))

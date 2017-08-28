@@ -6,9 +6,9 @@
             [mock-external-integration.schema :as ms]))
 
 (defn handle-get-email
-  ([] {})
+  ([] (ok (gw/emails)))
 
-  ([email-id] {}))
+  ([email-id] (ok (gw/email email-id))))
 
 (defapi app
   {:swagger
@@ -30,13 +30,13 @@
         (GET "/" []
           :return [ms/Email]
           :summary "fetch a list of email assets"
-          (ok (handle-get-email)))
+          (handle-get-email))
 
         (GET "/:email-id" []
           :path-params [email-id :- schema/Int]
           :return ms/Email
           :summary "fetch a particular email asset"
-          (ok (handle-get-email email-id))))
+          (handle-get-email email-id)))
 
       ;(GET "/segment" [])
 

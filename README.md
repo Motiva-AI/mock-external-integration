@@ -16,7 +16,12 @@ Some environment variables will need to be set. See `Environment Variables` sect
 
 #### Environment Variables
 
-- `GATEWAY_HOSTNAME`, hostname of the gateway server that this app will be using, e.g. `https://api.example.com` (no trailing slash)
+A set of environment variables is used to specify the various gateway
+endpoints. So that we don't need to specify each and every endpoints, these
+endpoints are assumed to be grouped to `email`, `segment`, `program`, and
+`activities`.
+
+- `GATEWAY_PATH_EMAIL`, the path to the gateway server for email assets, e.g. `https://api.example.com/api/1.0/asset/email`
 
 ### Local Development
 
