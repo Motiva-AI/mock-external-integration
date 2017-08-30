@@ -66,16 +66,13 @@
 
       (GET "/:experiment-id" []
         :summary "fetch a particular experiment meta information"
-        (ok))
-
-      (GET "/" []
-        :summary "fetch a list of experiments for this user"
+        :return ms/Experiment
         (ok))
 
       (POST "/" []
         :summary "Create a new experiment to send out messages"
-        :return schema/Uuid
-        :body   [experiment ms/Experiment]
+        :return ms/ExperimentReponse
+        :body   [experiment ms/ExperimentRequest]
         (ok)))
 
     (context "/export" []

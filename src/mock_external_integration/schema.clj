@@ -23,6 +23,21 @@
    :name          s/Str
    :numberOfContacts s/Int})
 
-(s/defschema Experiment
+(s/defschema ExperimentRequest
   ;; experiments are {treatmentId: [contactID, ...]}
   {:experiments      {s/Keyword [s/Int]}})
+
+(s/defschema ExperimentReponse
+  {s/Keyword s/Uuid})
+
+(s/defschema Experiment
+  {:id s/Int
+   :currentStatus s/Str
+   :name s/Str
+   :memberCount s/Str
+   :updatedAt s/Inst
+   :updatedBy s/Int
+   :createdAt s/Inst
+   :createdBy s/Int
+   :startAt s/Inst
+   :endAt s/Inst})
