@@ -31,13 +31,13 @@
   {s/Keyword s/Uuid})
 
 (s/defschema Experiment
-  {:id s/Int
-   :currentStatus s/Str
-   :name s/Str
-   :memberCount s/Str
-   :updatedAt s/Inst
-   :updatedBy s/Int
-   :createdAt s/Inst
-   :createdBy s/Int
-   :startAt s/Inst
-   :endAt s/Inst})
+  {:id            s/Int
+   :currentStatus s/Keyword
+   :name          s/Str
+   :memberCount   s/Int
+   :updatedAt     s/Inst
+   :updatedBy     s/Int
+   :createdAt     s/Inst
+   :createdBy     s/Int
+   :startAt       s/Inst
+   :endAt         s/Inst})
