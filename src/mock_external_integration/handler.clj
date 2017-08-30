@@ -12,6 +12,13 @@
 
   ([email-id] (ok (gw/email email-id))))
 
+(defn handle-get-segment
+  ([]
+   (ok))
+
+  ([segment-id]
+   (ok)))
+
 (defapi app
   {:swagger
    {:ui "/"
@@ -40,7 +47,32 @@
           :summary "fetch a particular email asset"
           (handle-get-email email-id)))
 
-      ;(GET "/segment" [])
+      (context "/segment" []
+        :tags ["segment"]
 
-      ;(GET "/segment/:segment-id" [])
-      )))
+        (GET "/" []
+          :return [ms/Segment]
+          :summary "fetch a list of segment assets"
+          (handle-get-segment))
+
+        (GET "/:segment-id" []
+          :path-params [segment-id :- schema/Int]
+          :return ms/Segment
+          :summary "fetch a particular segment asset"
+          (handle-get-segment))))
+
+    (context "/program" []
+      :tags ["program"]
+
+      (POST "/" []
+        :summary "Create a new program to send out messages"
+        (ok)))
+
+    (context "/export" []
+
+      (context "/activities" []
+        :tags ["activities"]
+
+        (POST "/" []
+          :summary "Create a request to export program activities"
+          (ok))))))

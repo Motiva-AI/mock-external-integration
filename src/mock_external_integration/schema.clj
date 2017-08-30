@@ -13,3 +13,13 @@
    :updatedBy (s/maybe s/Int)
    :updatedAt s/Inst})
 
+(s/defschema Segment
+  {:id            s/Int
+   :currentStatus s/Keyword
+   :createdAt     s/Inst
+   :updatedAt     s/Inst
+   :createdBy     s/Int
+   :updatedBy     s/Int
+   :name          s/Str
+   :numberOfContacts s/Int})
+
