@@ -31,7 +31,7 @@ $ lein ring server
 
 ## Contact
 
-[Paul Lam](paul@motiva.ai)
+Paul Lam, paul@motiva.ai
 
 ## License
 
