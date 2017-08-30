@@ -33,8 +33,8 @@
 
     (context "/asset" []
 
-      (context "/email" []
-        :tags ["asset/email"]
+      (context "/emails" []
+        :tags ["asset/emails"]
 
         (GET "/" []
           :return [ms/Email]
@@ -47,8 +47,8 @@
           :summary "fetch a particular email asset"
           (handle-get-email email-id)))
 
-      (context "/segment" []
-        :tags ["asset/segment"]
+      (context "/segments" []
+        :tags ["asset/segments"]
 
         (GET "/" []
           :return [ms/Segment]
