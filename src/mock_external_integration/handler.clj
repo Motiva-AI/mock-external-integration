@@ -65,12 +65,18 @@
       :tags ["experiment"]
 
       (GET "/:experiment-id" []
+        :path-params [experiment-id :- schema/Uuid]
         :summary "fetch a particular experiment meta information"
         :return ms/Experiment
         (ok))
 
+      (DELETE "/:experiment-id" []
+        :path-params [experiment-id :- schema/Uuid]
+        :summary "delete an experiment"
+        (no-content))
+
       (POST "/" []
-        :summary "Create a new experiment to send out messages"
+        :summary "create a new experiment to send out messages"
         :return ms/ExperimentReponse
         :body   [experiment ms/ExperimentRequest]
         (ok)))
@@ -80,10 +86,15 @@
       (context "/activities" []
         :tags ["activities"]
 
-        (GET
-          "/:program-id" []
+        (GET "/:program-id" []
+          :path-params [program-id :- schema/Uuid]
           :summary "fetch a list of activities export jobs for a given program"
           (ok))
+
+        (DELETE "/:program-id" []
+          :path-params [program-id :- schema/Uuid]
+          :summary "delete all activities export jobs for a given program"
+          (no-content))
 
         (POST "/:program-id" []
           :summary "Create a request to export activities for a given program"
