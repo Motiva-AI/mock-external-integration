@@ -61,11 +61,21 @@
           :summary "fetch a particular segment asset"
           (handle-get-segment))))
 
-    (context "/program" []
-      :tags ["program"]
+    (context "/experiment" []
+      :tags ["experiment"]
+
+      (GET "/:experiment-id" []
+        :summary "fetch a particular experiment meta information"
+        (ok))
+
+      (GET "/" []
+        :summary "fetch a list of experiments for this user"
+        (ok))
 
       (POST "/" []
-        :summary "Create a new program to send out messages"
+        :summary "Create a new experiment to send out messages"
+        :return schema/Uuid
+        :body   [experiment ms/Experiment]
         (ok)))
 
     (context "/export" []
@@ -73,6 +83,11 @@
       (context "/activities" []
         :tags ["activities"]
 
-        (POST "/" []
-          :summary "Create a request to export program activities"
+        (GET
+          "/:program-id" []
+          :summary "fetch a list of activities export jobs for a given program"
+          (ok))
+
+        (POST "/:program-id" []
+          :summary "Create a request to export activities for a given program"
           (ok))))))

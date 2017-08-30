@@ -23,3 +23,6 @@
    :name          s/Str
    :numberOfContacts s/Int})
 
+(s/defschema Experiment
+  ;; experiments are {treatmentId: [contactID, ...]}
+  {:experiments      {s/Keyword [s/Int]}})
