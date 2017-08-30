@@ -34,7 +34,7 @@
     (context "/asset" []
 
       (context "/email" []
-        :tags ["email"]
+        :tags ["asset/email"]
 
         (GET "/" []
           :return [ms/Email]
@@ -48,7 +48,7 @@
           (handle-get-email email-id)))
 
       (context "/segment" []
-        :tags ["segment"]
+        :tags ["asset/segment"]
 
         (GET "/" []
           :return [ms/Segment]
@@ -83,8 +83,26 @@
 
     (context "/export" []
 
+      (context "/segment" []
+        :tags ["export/contacts"]
+
+        (GET "/:segment-id" []
+          :path-params [segment-id :- schema/Int]
+          :summary "get the export status for this segment export job"
+          (ok))
+
+        (DELETE "/:segment-id" []
+          :path-params [segment-id :- schema/Int]
+          :summary "delete this segment export job"
+          (no-content))
+
+        (POST "/:segment-id" []
+          :path-params [segment-id :- schema/Int]
+          :summary "create a request to export contacts from a segment"
+          (ok)))
+
       (context "/activities" []
-        :tags ["activities"]
+        :tags ["export/activities"]
 
         (GET "/:program-id" []
           :path-params [program-id :- schema/Uuid]
