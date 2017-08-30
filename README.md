@@ -12,16 +12,16 @@ A mock API for integrating with Motiva. This repository is deployed to
 This repository is linked to our CI platform for continuous integration and
 deployment. The latest `master` commit that passes is deployed to Heroku automatically.
 
-Some environment variables will need to be set. See `Environment Variables` section.
+Some environment variables and a YAML file pointing to the gateway paths will
+need to be set. See `Configuration` section.
 
-#### Environment Variables
+#### Configuration
 
-A set of environment variables is used to specify the various gateway
-endpoints. So that we don't need to specify each and every endpoints, these
-endpoints are assumed to be grouped to `email`, `segment`, `program`, and
-`activities`.
+A environment variable is used to specify the gateway host.
 
-- `GATEWAY_PATH_EMAIL`, the path to the gateway server for email assets, e.g. `https://api.example.com/api/1.0/asset/email`
+- `GATEWAY_HOST`, host of the gateway server that this app will be using, e.g. `https://api.example.com`
+
+A separate [endpoints.yml](/resources/endpoints.yml) file is used to configure the relative endpoints to the gateway.
 
 ### Local Development
 

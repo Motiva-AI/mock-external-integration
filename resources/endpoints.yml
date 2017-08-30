@@ -1,0 +1,13 @@
+assets:
+
+  email-by-id: /assets/email/{email-id}
+  all-emails: /assets/emails
+
+  segment-by-id: /assets/segment/{segment-id}
+  all-segments: /assets/segment
+
+program: /program
+
+export:
+
+  activities: /export/activities
