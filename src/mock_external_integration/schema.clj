@@ -1,6 +1,19 @@
 (ns mock-external-integration.schema
   (:require [schema.core :as s]))
 
+(s/defschema Campaign
+  {:id            s/Int
+   :currentStatus s/Keyword
+   :updatedAt     s/Inst
+   :updatedBy     s/Int
+   :createdAt     s/Inst
+   :createdBy     s/Int
+   :startAt       s/Inst
+   :endAt         s/Inst
+   :name          s/Str
+   :emailTemplateIds [s/Int]
+   :segmentId        s/Int})
+
 (s/defschema Email
   "Meta data for an email"
   {:id        s/Int

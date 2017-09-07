@@ -7,6 +7,11 @@
             [mock-external-integration.schema :as ms]
             [mock-external-integration.gateway :as gw]))
 
+(defn handle-get-campaign
+  ([] (ok))
+
+  ([campaign-id] (ok)))
+
 (defn handle-get-email
   ([] (ok (gw/emails)))
 
@@ -31,20 +36,40 @@
 
   (context "/api" []
 
+    (context "/campaigns" []
+      :tags ["campaigns"]
+
+      (GET "/" []
+        :return [ms/Campaign]
+        :summary "fetch a list of Motiva campaigns"
+        (handle-get-campaign))
+
+      (GET "/:campaign-id" []
+        :path-params [campaign-id :- schema/Int]
+        :return ms/Campaign
+        :summary "fetch a list of Motiva campaigns"
+        (handle-get-campaign campaign-id))
+
+      (POST "/" []
+        :summary "create a new campaign"
+        :return schema/Int
+        :body   [campaign ms/Campaign]
+        (ok)))
+
     (context "/asset" []
 
-      (context "/emails" []
-        :tags ["asset/emails"]
+      (context "/email-templates" []
+        :tags ["asset/email-templates"]
 
         (GET "/" []
           :return [ms/Email]
-          :summary "fetch a list of email assets"
+          :summary "fetch a list of email template assets"
           (handle-get-email))
 
         (GET "/:email-id" []
           :path-params [email-id :- schema/Int]
           :return ms/Email
-          :summary "fetch a particular email asset"
+          :summary "fetch a particular email template asset"
           (handle-get-email email-id)))
 
       (context "/segments" []
@@ -52,13 +77,13 @@
 
         (GET "/" []
           :return [ms/Segment]
-          :summary "fetch a list of segment assets"
+          :summary "fetch a list of population segment assets"
           (handle-get-segment))
 
         (GET "/:segment-id" []
           :path-params [segment-id :- schema/Int]
           :return ms/Segment
-          :summary "fetch a particular segment asset"
+          :summary "fetch a particular population segment asset"
           (handle-get-segment))))
 
     (context "/experiment" []
