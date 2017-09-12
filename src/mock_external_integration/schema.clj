@@ -1,6 +1,10 @@
 (ns mock-external-integration.schema
   (:require [schema.core :as s]))
 
+(s/defschema Asset
+  {:id          s/Int
+   :displayName s/Str})
+
 (s/defschema Campaign
   {:id            s/Int
    :currentStatus s/Keyword
@@ -11,9 +15,8 @@
    :startAt       s/Inst
    :endAt         s/Inst
    :name          s/Str
-   :emailTemplateIds [s/Int]
-   :segmentId        s/Int})
-
+   :emailTemplateIds [Asset]
+   :segmentId        Asset})
 
 (s/defschema ExperimentRequest
   ;; experiments are {treatmentId: [contactID, ...]}
