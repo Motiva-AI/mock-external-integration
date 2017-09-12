@@ -12,18 +12,6 @@
 
   ([campaign-id] (ok)))
 
-(defn handle-get-email
-  ([] (ok (gw/emails)))
-
-  ([email-id] (ok (gw/email email-id))))
-
-(defn handle-get-segment
-  ([]
-   (ok))
-
-  ([segment-id]
-   (ok)))
-
 (defapi app
   {:swagger
    {:ui "/"
@@ -55,36 +43,6 @@
         :return schema/Int
         :body   [campaign ms/Campaign]
         (ok)))
-
-    (context "/asset" []
-
-      (context "/email-templates" []
-        :tags ["asset/email-templates"]
-
-        (GET "/" []
-          :return [ms/Email]
-          :summary "fetch a list of email template assets"
-          (handle-get-email))
-
-        (GET "/:email-id" []
-          :path-params [email-id :- schema/Int]
-          :return ms/Email
-          :summary "fetch a particular email template asset"
-          (handle-get-email email-id)))
-
-      (context "/segments" []
-        :tags ["asset/segments"]
-
-        (GET "/" []
-          :return [ms/Segment]
-          :summary "fetch a list of population segment assets"
-          (handle-get-segment))
-
-        (GET "/:segment-id" []
-          :path-params [segment-id :- schema/Int]
-          :return ms/Segment
-          :summary "fetch a particular population segment asset"
-          (handle-get-segment))))
 
     (context "/experiment" []
       :tags ["experiment"]
