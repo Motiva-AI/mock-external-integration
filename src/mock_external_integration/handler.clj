@@ -4,6 +4,7 @@
 
             [schema.core :as schema]
 
+            [mock-external-integration.lifecycle :as lifecycle]
             [mock-external-integration.schema :as ms]
             [mock-external-integration.gateway :as gw]))
 
@@ -11,6 +12,10 @@
   ([] (ok))
 
   ([campaign-id] (ok)))
+
+(defn handle-post-campaign
+  [campaign]
+  (lifecycle/create-campaign campaign))
 
 (defapi app
   {:swagger
@@ -40,9 +45,9 @@
 
       (POST "/" []
         :summary "create a new campaign"
-        :return schema/Int
+        :return schema/Uuid
         :body   [campaign ms/Campaign]
-        (ok)))
+        (ok (handle-post-campaign campaign))))
 
     (context "/experiment" []
       :tags ["experiment"]
